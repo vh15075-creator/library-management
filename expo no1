@@ -1,0 +1,82 @@
+// Base Class
+class Student {
+    private String name;
+    private int rollNo;
+    private int marks;
+
+    // Constructor
+    Student(String name, int rollNo, int marks) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.marks = marks;
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public int getMarks() {
+        return marks;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+
+    // Method to calculate grade
+    public void calculateGrade() {
+        System.out.println("Grade Calculation");
+    }
+}
+
+// Derived Class
+class Result extends Student {
+
+    Result(String name, int rollNo, int marks) {
+        super(name, rollNo, marks);
+    }
+
+    // Method Overriding
+    @Override
+    public void calculateGrade() {
+        int marks = getMarks();
+
+        if (marks >= 90) {
+            System.out.println("Grade : A");
+        } else if (marks >= 75) {
+            System.out.println("Grade : B");
+        } else if (marks >= 50) {
+            System.out.println("Grade : C");
+        } else {
+            System.out.println("Grade : Fail");
+        }
+    }
+}
+
+// Main Class
+public class StudentManagement {
+    public static void main(String[] args) {
+
+        Result s = new Result("Ravi", 101, 82);
+
+        System.out.println("Student Name : " + s.getName());
+        System.out.println("Roll Number : " + s.getRollNo());
+        System.out.println("Marks : " + s.getMarks());
+
+        s.calculateGrade();
+    }
+}
