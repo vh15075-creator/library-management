@@ -1,0 +1,77 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+class Book {
+    int id;
+    String name;
+    String author;
+
+    // Constructor
+    Book(int id, String name, String author) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+    }
+
+    // Display method
+    void display() {
+        System.out.println(id + " " + name + " " + author);
+    }
+}
+
+public class LibraryManagement {
+    public static void main(String[] args) {
+
+        // Creating ArrayList and HashMap
+        ArrayList<Book> books = new ArrayList<>();
+        HashMap<Integer, Book> map = new HashMap<>();
+
+        // ADD
+        Book b1 = new Book(101, "Java", "James");
+        Book b2 = new Book(102, "Python", "Guido");
+
+        books.add(b1);
+        books.add(b2);
+
+        map.put(b1.id, b1);
+        map.put(b2.id, b2);
+
+        // VIEW using Enhanced For Loop
+        System.out.println("Book List");
+        for (Book b : books) {
+            b.display();
+        }
+
+        // UPDATE
+        b1.name = "Core Java";
+
+        System.out.println("\nAfter Update");
+        for (Book b : books) {
+            b.display();
+        }
+
+        // DELETE
+        books.remove(b2);
+        map.remove(102);
+
+        System.out.println("\nAfter Delete");
+
+        Iterator<Book> itr = books.iterator();
+
+        while (itr.hasNext()) {
+            itr.next().display();
+        }
+
+        // SEARCH using HashMap
+        System.out.println("\nSearch Book ID 101");
+
+        Book search = map.get(101);
+
+        if (search != null) {
+            search.display();
+        } else {
+            System.out.println("Book Not Found");
+        }
+    }
+}
